@@ -26,5 +26,26 @@ Our goal is to build and publish the documentation site using Jekyll and Netlify
 
 ### Install Ruby on Windows
 
+> Before we install Jekyll that compiles our site, we need to install Ruby. Jekyll is a Ruby-based program and needs Ruby to run.
 
+1. Go to [RubyInstaller for Windows](https://rubyinstaller.org/downloads/).
 
+2. Install the recommended **Ruby+Devkit 2.6.X (x64)** version.
+
+    ![img](.gitbook/assets/ruby-installer.png)
+
+3. Install everything by default.
+
+    ![img](.gitbook/assets/installation-ruby.png)
+
+4. When the installation completes, you see this command prompt screen. Press **Enter**`** two times when prompted.
+
+    ![img](.gitbook/assets/ruby-installed.png)
+
+5. When the installation in the command prompt exits, let's assume that we have Ruby installed. If you want to make sure, open the command prompt and type `ruby -v` and press **Enter**.
+
+    ![img](.gitbook/assets/check-ruby-version.png)
+
+---
+
+## Install Jekyll
