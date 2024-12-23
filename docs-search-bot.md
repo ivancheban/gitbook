@@ -99,7 +99,7 @@ Add a Python file that executes the script for converting the text in your .md a
 
 1. Run the Python script in the `generate_content_json.py` file: either click the Play button in VS Code
 
-    ![img](.gitbook/assets/run-python.png)
+    ![img](img/run-python.png)
 
     or run this command in the folder with your Python file:
 
@@ -388,10 +388,10 @@ Add all the chatbot JS, CSS, and layout JS files:
 
 That's all you need to run your Docusaurus site with the search chatbot locally or deploy it. This is how the chatbot button looks:
 
-![img](.gitbook/assets/chatbot-button.png)
+![img](img/chatbot-button.png)
 
 And this is how the chatbot dialog window looks when you click the button:
 
-![img](.gitbook/assets/chatbot-dialog.png)
+![img](img/chatbot-dialog.png)
 
 The links to the documentation articles are clickable. The button stays at the bottom even when you scroll the page. To try this out, go to my test site here: [https://ivan-documentation-example.netlify.app/](https://ivan-documentation-example.netlify.app/)
