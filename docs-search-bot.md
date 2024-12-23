@@ -6,9 +6,7 @@ description: >
   Add a chatbot to search in your Docusaurus site docs. This is another way to search your site contents by asking the chatbot and getting the links to the docs articles.
 ---
 
-{{% pageinfo %}}
-The goal is to add the full-text search chatbot to your Docusaurus site. You get a chatbot on every page of your site. You can interact with the chatbot by clicking the chatbot button and entering your question in the window that appears. The bot responds by providing the clickable links to the documentation articles that contain the search text or phrase. To see the result, go to: https://ivan-documentation-example.netlify.app/
-{{% /pageinfo %}}
+The goal is to add the full-text search chatbot to your Docusaurus site. You get a chatbot on every page of your site. You can interact with the chatbot by clicking the chatbot button and entering your question in the window that appears. The bot responds by providing the clickable links to the documentation articles that contain the search text or phrase. To see the result, go to: [https://ivan-documentation-example.netlify.app/](https://ivan-documentation-example.netlify.app/)
 
 ## Search chatbot built with AI
 
@@ -399,4 +397,4 @@ And this is how the chatbot dialog window looks when you click the button:
 <img src="../img/chatbot-dialog.png" alt="Install Lunr.js" width="800"/>
 <br></br>
 
-The links to the documentation articles are clickable. The button stays at the bottom even when you scroll the page. To try this out, go to my test site here: https://ivan-documentation-example.netlify.app/
+The links to the documentation articles are clickable. The button stays at the bottom even when you scroll the page. To try this out, go to my test site here: [https://ivan-documentation-example.netlify.app/](https://ivan-documentation-example.netlify.app/)
