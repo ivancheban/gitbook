@@ -18,7 +18,7 @@ Before you begin, ensure you have the following:
 
 - [Authenticated with Apolo](https://docs.apolo.us/index/core/getting-started/sign-up-login)
 - [Apolo CLI installed](https://docs.apolo.us/index/cli/installing)
-- Access to a compute cluster and project
+- [Access to a compute cluster and project](https://docs.apolo.us/index/core/getting-started/organizations)
 - [Redis CLI installed](https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/install-redis-on-windows/)
 
 ## Discovery
@@ -65,7 +65,7 @@ Ensure the job is running and note the job ID.
     apolo run --name redis-client --preset cpu-small --volume storage:redis-data:/data:rw redis:6.2 redis-cli -h redis-job -p 6379
     ```
 
-## Clenup
+## Cleanup
 
 To restore the system to its original state:
 
