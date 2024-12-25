@@ -98,7 +98,7 @@ To restore the system to its original state:
 
     > **Note:**
     >
-    > Replace `<job ID>` and `<another job ID>` with the IDs of your actual jobs. To view the running jobs, use: `apolo ps`. To view all jobs regardless of their status, use: `apolo ps --all`.
+    > Replace `<job ID>` and `<another job ID>` with the IDs of your actual jobs. To view the running jobs, use: `apolo ps`. To view all jobs regardless of their status, use: `apolo ps --all`
 
 1. Remove the Redis data:
 
