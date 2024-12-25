@@ -42,9 +42,13 @@ To locate a publicly available Redis container image:
     apolo run --name redis-job --preset cpu-small --volume storage:redis-data:/data:rw redis:7.4.1 -- --port 6379
     ```
 
-The terminal output shows the created Redis job ID and other information:
+> **Note:**
+>
+> You can access your dataset from within a container by giving `--volume storage:data/:/var/storage/data/:rw` to `apolo run` as a parameter when starting a new job. For more information, see [Configuring Redis with Apolo files for persistence](#configuring-redis-with-apolo-files-for-persistence).
 
-![Redis job](img/redis-job.png)
+    The terminal output shows the created Redis job ID and other information:
+
+    ![Redis job](img/redis-job.png)
 
 1. Check the status of the Redis job:
 
@@ -94,13 +98,15 @@ To restore the system to its original state:
 
     > **Note:**
     >
-    > Replace `<job ID>` and `<another job ID>` with the IDs of your actual jobs. To view the running jobs, use: `apolo ps`.
+    > Replace `<job ID>` and `<another job ID>` with the IDs of your actual jobs. To view the running jobs, use: `apolo ps`. To view all jobs regardless of their status, use: `apolo ps --all`.
 
-1. Remove the Redis data volume:
+1. Remove the Redis data:
 
     ```sh
     apolo storage rm -r storage:redis-data
     ```
+
+    This removes directories and their contents recursively.
 
 ## Configuring Redis with Apolo files for persistence
 
@@ -109,13 +115,13 @@ To configure Redis to use Apolo Files for data persistence, you can mount a stor
 1. Create a new storage volume for Redis data:
 
     ```sh
-    apolo mkvol storage:redis-data
+    apolo storage mkdir storage:redis-data
     ```
 
 1. Run the Redis job with the storage volume mounted to the `/data` directory inside the container:
 
     ```sh
-    apolo run --name redis-job --preset cpu-small --volume storage:redis-data:/data:rw redis:6.2 --port 6379
+    apolo run --name redis-job --preset cpu-small --volume storage:redis-data:/data:rw redis:7.4.1 -- --port 6379
     ```
 
 In this command:
@@ -126,3 +132,5 @@ In this command:
 With this configuration, Redis will store its data in the `redis-data` storage volume, which is managed by the Apolo Files system. This ensures that your Redis data is persisted and can be accessed by other jobs or applications that mount the same storage volume.
 
 You can also manage the `redis-data` storage volume using the Apolo CLI or the Files application interface, allowing you to perform operations like copying, moving, or deleting the Redis data as needed.
+
+For more information, see [Mounting Storage in Jobs](https://docs.apolo.us/index/core/apps/pre-installed/files#mounting-storage-in-jobs).
