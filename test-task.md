@@ -99,9 +99,9 @@ To configure Redis to use Apolo Files for data persistence, you can mount a stor
 
 In this command:
 
-- `--volume storage:redis-data:/data:rw` mounts the redis-data storage volume to the `/data` directory inside the Redis container with read-write permissions.
+- `--volume storage:redis-data:/data:rw` mounts the `redis-data` storage volume to the `/data` directory inside the Redis container with read-write permissions.
 - `--port 6379` exposes the Redis port 6379 to allow access to the Redis database.
 
-With this configuration, Redis will store its data in the redis-data storage volume, which is managed by the Apolo Files system. This ensures that your Redis data is persisted and can be accessed by other jobs or applications that mount the same storage volume.
+With this configuration, Redis will store its data in the `redis-data` storage volume, which is managed by the Apolo Files system. This ensures that your Redis data is persisted and can be accessed by other jobs or applications that mount the same storage volume.
 
 You can also manage the `redis-data` storage volume using the Apolo CLI or the Files application interface, allowing you to perform operations like copying, moving, or deleting the Redis data as needed.
