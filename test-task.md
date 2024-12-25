@@ -42,9 +42,9 @@ To locate a publicly available Redis container image:
     apolo run --name redis-job --preset cpu-small --volume storage:redis-data:/data:rw redis:7.4.1 -- --port 6379
     ```
 
-> **Note:**
->
-> You can access your dataset from within a container by giving `--volume storage:data/:/var/storage/data/:rw` to `apolo run` as a parameter when starting a new job. For more information, see [Configuring Redis with Apolo files for persistence](#configuring-redis-with-apolo-files-for-persistence).
+    > **Note:**
+    >
+    > You can access your dataset from within a container by giving `--volume storage:data/:/var/storage/data/:rw` to `apolo run` as a parameter when starting a new job. For more information, see [Configuring Redis with Apolo files for persistence](#configuring-redis-with-apolo-files-for-persistence).
 
     The terminal output shows the created Redis job ID and other information:
 
