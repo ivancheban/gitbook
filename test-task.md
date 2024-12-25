@@ -19,7 +19,7 @@ Before you begin, ensure you have the following:
 - [Authenticated with Apolo](https://docs.apolo.us/index/core/getting-started/sign-up-login)
 - [Apolo CLI installed](https://docs.apolo.us/index/cli/installing)
 - Access to a compute cluster and project
-- Redis CLI installed
+- [Redis CLI installed](https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/install-redis-on-windows/)
 
 ## Discovery
 
