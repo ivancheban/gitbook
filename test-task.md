@@ -7,17 +7,19 @@ This guide walks you through the process of running Redis with Apolo Jobs and CL
 - [Discovery:](#discovery) Locating a publicly available container image, identifying its version, and recording essential details.
 - [Installation:](#installation) Setting up Redis using Apolo Jobs, including necessary configuration steps and Apolo CLI commands.
 - [Usage:](#usage) Verifying that a Redis job is operational and accessing the database through other jobs or Apolo CLI using port-forwarding.
-- [Cleanup:](#clenup) Restoring the system to its original state.
-- [Persistance configuration:](#configuring-redis-with-apolo-files-for-persistence) Configuring Redis with Apolo files for persistence.
+- [Cleanup:](#cleanup) Restoring the system to its original state.
+- [Persistence configuration:](#configuring-redis-with-apolo-files-for-persistence) Configuring Redis with Apolo files for persistence.
 
+![User journey](img/user-journey.png)
 
 ## Prerequisites
 
 Before you begin, ensure you have the following:
 
-- Authenticated with Apolo
-- Apolo CLI installed
+- [Authenticated with Apolo](https://docs.apolo.us/index/core/getting-started/sign-up-login)
+- [Apolo CLI installed](https://docs.apolo.us/index/cli/installing)
 - Access to a compute cluster and project
+- Redis CLI installed
 
 ## Discovery
 
@@ -31,15 +33,15 @@ To locate a publicly available Redis container image:
 
 1. Create a Redis job using the Apolo CLI:
 
-```sh
-apolo run --name redis-job --preset cpu-small --volume storage:redis-data:/data:rw redis:6.2 --port 6379
-```
+    ```sh
+    apolo run --name redis-job --preset cpu-small --volume storage:redis-data:/data:rw redis:6.2 --port 6379
+    ```
 
 1. Check the status of the Redis job:
 
-```sh
-apolo ps
-```
+    ```sh
+    apolo ps
+    ```
 
 Ensure the job is running and note the job ID.
 
@@ -47,21 +49,21 @@ Ensure the job is running and note the job ID.
 
 1. To access the Redis database from your local machine, use port-forwarding:
 
-```sh
-apolo port-forward <job-id> 6379:6379
-```
+    ```sh
+    apolo port-forward <job-id> 6379:6379
+    ```
 
 1. You can now access the Redis database using a Redis client:
 
-```sh
-redis-cli -h localhost -p 6379
-```
+    ```sh
+    redis-cli -h localhost -p 6379
+    ```
 
 1. To access Redis from another job, create a new job and connect to the Redis job using the internal hostname:
 
-```sh
-apolo run --name redis-client --preset cpu-small --volume storage:redis-data:/data:rw redis:6.2 redis-cli -h redis-job -p 6379
-```
+    ```sh
+    apolo run --name redis-client --preset cpu-small --volume storage:redis-data:/data:rw redis:6.2 redis-cli -h redis-job -p 6379
+    ```
 
 ## Clenup
 
@@ -69,28 +71,37 @@ To restore the system to its original state:
 
 1. Terminate the Redis job:
 
-```sh
-apolo rm storage:redis-data
-```
+    ```sh
+    apolo rm storage:redis-data
+    ```
 
 1. Remove the Redis data volume:
 
-```sh
-apolo rm storage:redis-data
-```
+    ```sh
+    apolo rm storage:redis-data
+    ```
 
 ## Configuring Redis with Apolo files for persistence
 
-To configure Redis to use Apolo Files for persistence:
+To configure Redis to use Apolo Files for data persistence, you can mount a storage volume to the Redis container. This will allow Redis to store its data on the Apolo Files storage system, ensuring that the data persists even if the Redis container is stopped or restarted.
 
-1. Create a volume for Redis data:
+1. Create a new storage volume for Redis data:
 
-```sh
-apolo mkvol storage:redis-data
-```
+    ```sh
+    apolo mkvol storage:redis-data
+    ```
 
-1. Run the Redis job with the volume mounted:
+1. Run the Redis job with the storage volume mounted to the `/data` directory inside the container:
 
-```sh
-apolo run --name redis-job --preset cpu-small --volume storage:redis-data:/data:rw redis:6.2 --port 6379
-```
+    ```sh
+    apolo run --name redis-job --preset cpu-small --volume storage:redis-data:/data:rw redis:6.2 --port 6379
+    ```
+
+In this command:
+
+- `--volume storage:redis-data:/data:rw` mounts the redis-data storage volume to the `/data` directory inside the Redis container with read-write permissions.
+- `--port 6379` exposes the Redis port 6379 to allow access to the Redis database.
+
+With this configuration, Redis will store its data in the redis-data storage volume, which is managed by the Apolo Files system. This ensures that your Redis data is persisted and can be accessed by other jobs or applications that mount the same storage volume.
+
+You can also manage the `redis-data` storage volume using the Apolo CLI or the Files application interface, allowing you to perform operations like copying, moving, or deleting the Redis data as needed.
